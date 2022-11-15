@@ -6,13 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.compositionv2.R
+import com.example.compositionv2.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
+
+    private var _b: FragmentWelcomeBinding? = null
+    private val b: FragmentWelcomeBinding
+        get() = _b ?: throw RuntimeException("FragmentWelcomeBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_welcome, container, false)
+    ): View {
+        _b = FragmentWelcomeBinding.inflate(inflater, container, false)
+        return b.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        b.buttonUnderstand.setOnClickListener { }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _b = null
     }
 }
