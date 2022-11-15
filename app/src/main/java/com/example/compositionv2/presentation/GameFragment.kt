@@ -6,13 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.compositionv2.R
+import com.example.compositionv2.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
+
+    private var _b: FragmentGameBinding? = null
+    private val b: FragmentGameBinding
+        get() = _b ?: throw RuntimeException("FragmentGameBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_game, container, false)
+    ): View {
+        _b = FragmentGameBinding.inflate(inflater, container, false)
+        return b.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _b = null
     }
 }
