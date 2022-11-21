@@ -83,7 +83,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )
-        _enoughCount.value = countOfRightAnswers >=gameSettings.minCountOfRightAnswers
+        _enoughCount.value = countOfRightAnswers >= gameSettings.minCountOfRightAnswers
         _enoughPercent.value = percent >= gameSettings.minPercentOfRightAnswers
     }
 
@@ -91,7 +91,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         if (countOfQuestions == 0) {
             return 0
         }
-        return ((countOfRightAnswers - countOfQuestions.toFloat()) * 100).toInt()
+        return ((countOfRightAnswers / countOfQuestions.toFloat()) * 100).toInt()
     }
 
     private fun checkAnswer(number: Int) {
