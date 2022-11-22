@@ -78,7 +78,7 @@
         android:id="@+id/button_retry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/try_again"
+        android:text="@string/retry"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
